@@ -10,16 +10,16 @@
             <a [routerLink]="['/events']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">All Events</a>
           </li>
           <li><a [routerLink]="['/events/new']" routerLinkActive="active">Create Event</a></li>
-          <li class="dropdown">
+          <li #selectEvent  class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
               Events
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li >
-                <a href="">Angular Connect</a>
+              <li *ngFor="let e of events">
+                <a [routerLink]="['/events/', e.id]">{{e.name}}</a>
               </li>
-            </ul> 
+            </ul>
           </li>
         </ul>
         <div class="navbar-header navbar-right">

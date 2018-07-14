@@ -1,20 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http'
 
 import {
   EventsListComponent,
   EventService,
   CreateEventComponent,
-  EventRouteActivator,
+  CreateSessionComponent,
   EventListResolver,
   EventDetailsComponent,
-  CreateSessionComponent,
   SessionListComponent,
   DurationPipe,
   UpvoteComponent,
   VoterService,
   LocationValidator,
+  EventResolver,
 } from './events/index'
 
 
@@ -39,6 +40,7 @@ let jQuery = window['$']
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     RouterModule.forRoot(appRoutes)
@@ -62,8 +64,8 @@ let jQuery = window['$']
   ],
   providers: [
     AuthService,
-    EventRouteActivator,
     EventService,
+    EventResolver,
     {
       provide: 'canDeactivateCreateEvent', 
       useValue: checkDirtyState
